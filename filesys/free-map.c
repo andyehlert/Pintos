@@ -83,3 +83,10 @@ free_map_create (void)
   if (!bitmap_write (free_map, free_map_file))
     PANIC ("can't write free map");
 }
+
+/* Returns the number of sectors in free_map that are set to VALUE. */
+size_t
+free_map_count(bool value)
+{
+  return bitmap_count(free_map, 0, bitmap_size(free_map), value);
+}
